@@ -1,0 +1,12 @@
+pyramid
+pyramid-debugtoolbar
+pyramid-retry
+msgpack-python
+itsdangerous
+google-cloud-storage
+redis
+transaction
+pyramid-retry
+pyramid-tm
+pyramid-jinja2
+pyramid-services

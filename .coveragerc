@@ -1,0 +1,7 @@
+[run]
+branch = true
+source =
+    armonaut/
+omit =
+    armonaut/__about__.py
+    armonaut/wsgi.py

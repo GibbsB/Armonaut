@@ -1,0 +1,37 @@
+sudo: required
+language: python
+python: 3.6-dev
+
+services:
+  - postgresql
+
+cache:
+  pip: true
+  directories:
+    - ~/.cache
+
+before_install:
+  - psql -c 'CREATE DATABASE armonaut;' -U postgres
+
+install:
+  - python -m pip install -r requirements.txt -r dev-requirements.txt
+
+script:
+  - flake8
+  - pytest tests/
+
+after_success:
+  - codecov
+
+notifications:
+  email: false
+  webhooks:
+    urls:
+      - https://webhooks.gitter.im/e/24f643ef79e1a441dc7b
+    on_success: change
+    on_failure: always
+    on_start: never
+
+branches:
+  only:
+    - master
