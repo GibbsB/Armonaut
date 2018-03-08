@@ -1,8 +1,9 @@
 # Armonaut
 
-[![Travis](https://img.shields.io/travis/Armonaut/Armonaut/master.svg)](https://travis-ci.org/Armonaut/Armonaut)
-[![Codecov](https://img.shields.io/codecov/c/github/Armonaut/Armonaut/master.svg)](https://codecov.io/gh/Armonaut/Armonaut)
-[![Gitter](https://img.shields.io/gitter/room/armonaut-io/Lobby.svg)](https://gitter.im/armonaut-io/Lobby)
+| Branch Status | | | |
+|-|-|-|-|
+| Released (`master`) | [![Travis](https://img.shields.io/travis/Armonaut/Armonaut/master.svg)](https://travis-ci.org/Armonaut/Armonaut) | [![Codecov](https://img.shields.io/codecov/c/github/Armonaut/Armonaut/master.svg)](https://codecov.io/gh/Armonaut/Armonaut) | [![Gitter](https://img.shields.io/gitter/room/armonaut-io/Lobby.svg)](https://gitter.im/armonaut-io/Lobby)
+| Development (`develop`) | [![Travis](https://img.shields.io/travis/Armonaut/Armonaut/develop.svg)](https://travis-ci.org/Armonaut/Armonaut) | [![Codecov](https://img.shields.io/codecov/c/github/Armonaut/Armonaut/master.svg)](https://codecov.io/gh/Armonaut/Armonaut) | |
 
 ## Contributing
 

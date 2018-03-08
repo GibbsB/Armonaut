@@ -18,6 +18,7 @@ import typing
 import transaction
 from pyramid.config import Configurator as _Configurator
 from pyramid.security import Allow
+from pyramid.tweens import EXCVIEW
 
 
 class Environment(enum.Enum):
@@ -142,6 +143,15 @@ def configure(settings=None) -> Configurator:
 
     # Register support for sessions
     config.include('.sessions')
+
+    # Register HTTP compression
+    config.add_tween(
+        'armonaut.utils.compression.compression_tween_factory',
+        over=[
+            'pyramid_debugtoolbar.toolbar_tween_factory',
+            EXCVIEW
+        ]
+    )
 
     # Scan everything for additional configuration
     config.scan(ignore=[

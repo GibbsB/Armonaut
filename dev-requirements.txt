@@ -5,3 +5,5 @@ flake8
 webtest
 pretend
 codecov
+webob>=1.7.4,<1.8.0
+semver
