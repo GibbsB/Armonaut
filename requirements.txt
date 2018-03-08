@@ -3,10 +3,11 @@ pyramid-debugtoolbar
 pyramid-retry
 msgpack-python
 itsdangerous
-google-cloud-storage
 redis
 transaction
 pyramid-retry
-pyramid-tm
+pyramid-tm>=1.1.1,<2.0.0
 pyramid-jinja2
 pyramid-services
+psycopg2
+sqlalchemy

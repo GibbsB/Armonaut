@@ -12,8 +12,12 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from armonaut.config import Configurator
+from pyramid.view import view_config
 
 
-def test_config_returns_configurator(app_config):
-    assert isinstance(app_config, Configurator)
+@view_config(
+    route_name='index',
+    renderer='parent.html'
+)
+def index(request):
+    return {}

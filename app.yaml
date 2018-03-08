@@ -1,3 +1,0 @@
-entrypoint: gunicorn -b :$PORT armonaut.wsgi:app
-env: flex
-runtime: custom

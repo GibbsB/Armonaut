@@ -1,0 +1,15 @@
+coverage:
+  status:
+    project: false
+    patch:
+      default:
+        target: 95
+    changes: false
+
+  notify:
+    gitter:
+      default:
+        url: "https://webhooks.gitter.im/e/9532b7ba08c7d705f3ba"
+        threshold: 1%
+
+comment: off
