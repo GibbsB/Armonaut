@@ -32,7 +32,7 @@ class Configurator(_Configurator):
 
     def make_wsgi_app(self, *args, **kwargs):
         app = super().make_wsgi_app(*args, **kwargs)
-        for middleware, args, kw in self.get_settings()['wsgi.middlewares']:
+        for middleware, args, kw in self.get_settings().get('wsgi.middlewares', []):
             app = middleware(app, *args, **kw)
         return app
 
@@ -145,9 +145,10 @@ def configure(settings=None) -> Configurator:
 
     # Scan everything for additional configuration
     config.scan(ignore=[
-        'armonaut.wsgi'
+        'armonaut.wsgi',
+        'armonaut.routes'
     ])
-
+    config.include('.routes')
     config.commit()
 
     return config
