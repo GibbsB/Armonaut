@@ -32,8 +32,8 @@ __all__ = [
 def random_token() -> str:
     """Generates a random URL-safe token.
     """
-    token = base64.urlsafe_b64encode(os.urandom(32)).rstrip('=')
-    return token.decode('utf-8')
+    token = base64.urlsafe_b64encode(os.urandom(32)).decode('utf-8').rstrip('=')
+    return token
 
 
 class Signer(_Signer):

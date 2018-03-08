@@ -12,8 +12,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import os
 import pretend
-from armonaut.config import Configurator
+from armonaut.config import Configurator, configure
 
 
 def test_config_returns_configurator(app_config):
@@ -31,3 +32,14 @@ def test_configurator_middlewares():
 
     assert app is new_app
     assert len(middleware.calls) == 1
+
+
+def test_maybe_set_from_os_environ(monkeypatch):
+    env = os.environ.copy()
+    env['ARMONAUT_SECRET'] = 'value'
+    env['REDIS_URL'] = 'url'
+    monkeypatch.setattr(os, 'environ', env)
+
+    config = configure()
+
+    assert config.registry.settings['armonaut.secret'] == 'value'
