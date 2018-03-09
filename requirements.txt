@@ -11,3 +11,4 @@ pyramid-jinja2
 pyramid-services
 psycopg2
 sqlalchemy
+gunicorn

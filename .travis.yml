@@ -3,14 +3,28 @@ language: python
 python: 3.6-dev
 
 services:
-  - postgresql
+  - redis-server
+  - docker
 
 cache:
   pip: true
   directories:
     - ~/.cache
+    - ~/.docker
+
+env:
+  global:
+    - DOCKER_COMPOSE=1
+    - REDIS_URL=redis://localhost:6379/0
 
 before_install:
+  # Docker-Compose
+  - sudo rm /usr/local/bin/docker-compose
+  - curl -L https://github.com/docker/compose/releases/download/1.19.0/docker-compose-`uname -s`-`uname -m` > docker-compose
+  - chmod +x docker-compose
+  - sudo mv docker-compose /usr/local/bin
+
+  # PostgreSQL
   - psql -c 'CREATE DATABASE armonaut;' -U postgres
 
 install:
@@ -19,6 +33,7 @@ install:
 script:
   - flake8
   - pytest
+  - docker-compose build && docker-compose run web pytest
 
 after_success:
   - codecov

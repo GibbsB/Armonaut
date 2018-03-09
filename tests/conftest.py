@@ -12,6 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import os
 import pytest
 import webtest as _webtest
 import pyramid.testing
@@ -20,11 +21,12 @@ from armonaut.config import configure, Environment
 
 @pytest.fixture
 def app_config():
+    redis_url = os.environ.get('REDIS_URL', 'redis://localhost:6379/0')
     config = configure({
         'armonaut.env': Environment.DEVELOPMENT,
         'armonaut.secret': 'notasecret',
         'sessions.secret': 'notasecret',
-        'sessions.url': 'redis://localhost:6379/0'
+        'sessions.url': redis_url
     })
     return config
 

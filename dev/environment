@@ -1,0 +1,6 @@
+DOCKER_COMPOSE=1
+
+ARMONAUT_ENV=development
+ARMONAUT_SECRET=notasecret
+
+REDIS_URL=redis://redis:6379/0

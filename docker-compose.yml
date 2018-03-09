@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+  redis:
+    image: redis:latest
+
+  web:
+    build:
+      context: .
+    command: gunicorn --bind 0.0.0.0:8080 armonaut.wsgi:app
+    env_file: dev/environment
+    ports:
+      - '80:8080'
+    links:
+      - redis

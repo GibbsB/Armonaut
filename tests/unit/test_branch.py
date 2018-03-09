@@ -19,11 +19,13 @@ import subprocess
 import semver
 from armonaut.__about__ import __version__
 
-GIT_BRANCH = subprocess.check_output('git rev-parse --abbrev-ref HEAD', shell=True).strip()
+try:
+    GIT_BRANCH = subprocess.check_output('git rev-parse --abbrev-ref HEAD', shell=True).strip()
+except subprocess.CalledProcessError:
+    GIT_BRANCH = 'develop'
 
 # These tests only run on the master branch. They're used for checking the __version__ string and CHANGELOG format.
 master_branch_only = pytest.mark.skipif(GIT_BRANCH != 'master', reason='Test only runs on the master branch.')
-
 develop_branch_only = pytest.mark.skipif(GIT_BRANCH == 'master', reason='Test only runs on the non-master branches.')
 
 
