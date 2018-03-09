@@ -16,7 +16,8 @@ import os
 import pytest
 
 
-docker_compose_only = pytest.mark.skipif(
-    not bool('DOCKER_COMPOSE' in os.environ),
-    reason='Test only runs in Docker.'
+requires_external_services = pytest.mark.skipif(
+    not bool('EXTERNAL_SERVICES' in os.environ),
+    reason='Test only runs while external services are available.',
+    explcitly=1
 )

@@ -2,8 +2,8 @@
 
 | Branch Status | | | |
 |-|-|-|-|
-| Released (`master`) | [![Travis](https://img.shields.io/travis/Armonaut/Armonaut/master.svg)](https://travis-ci.org/Armonaut/Armonaut) | [![Codecov](https://img.shields.io/codecov/c/github/Armonaut/Armonaut/master.svg)](https://codecov.io/gh/Armonaut/Armonaut) | [![Gitter](https://img.shields.io/gitter/room/armonaut-io/Lobby.svg)](https://gitter.im/armonaut-io/Lobby)
-| Development (`develop`) | [![Travis](https://img.shields.io/travis/Armonaut/Armonaut/develop.svg)](https://travis-ci.org/Armonaut/Armonaut) | [![Codecov](https://img.shields.io/codecov/c/github/Armonaut/Armonaut/master.svg)](https://codecov.io/gh/Armonaut/Armonaut) | |
+| Released (`master`) | [![Travis](https://img.shields.io/travis/Armonaut/Armonaut/master.svg)](https://travis-ci.org/Armonaut/Armonaut) | [![Codecov](https://img.shields.io/codecov/c/github/Armonaut/Armonaut/master.svg)](https://codecov.io/gh/Armonaut/Armonaut/branches/master) | [![Gitter](https://img.shields.io/gitter/room/armonaut-io/Lobby.svg)](https://gitter.im/armonaut-io/Lobby) |
+| Development (`develop`) | [![Travis](https://img.shields.io/travis/Armonaut/Armonaut/develop.svg)](https://travis-ci.org/Armonaut/Armonaut) | [![Codecov](https://img.shields.io/codecov/c/github/Armonaut/Armonaut/develop.svg)](https://codecov.io/gh/Armonaut/Armonaut/branches/develop) | [![PyPI](https://img.shields.io/pypi/v/armonaut.svg)](https://pypi.org/projects/armonaut)|
 
 ## Contributing
 

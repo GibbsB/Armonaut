@@ -14,10 +14,10 @@
 
 import pretend
 from armonaut.sessions import RedisSessionFactory
-from ..common import docker_compose_only
+from ..common import requires_external_services
 
 
-@docker_compose_only
+@requires_external_services
 def test_session_added_and_getting_from_redis(app_config, pyramid_request):
     factory = RedisSessionFactory(
         app_config.registry.settings['sessions.secret'],

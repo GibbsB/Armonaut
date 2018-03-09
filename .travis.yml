@@ -1,10 +1,5 @@
-sudo: required
 language: python
 python: 3.6-dev
-
-services:
-  - redis-server
-  - docker
 
 cache:
   pip: true
@@ -12,31 +7,66 @@ cache:
     - ~/.cache
     - ~/.docker
 
-env:
-  global:
-    - DOCKER_COMPOSE=1
-    - REDIS_URL=redis://localhost:6379/0
+jobs:
+  include:
+    # Linting
+    - stage: unit
+      sudo: false
+      install:
+        - python -m pip install flake8
+      script:
+        - flake8
 
-before_install:
-  # Docker-Compose
-  - sudo rm /usr/local/bin/docker-compose
-  - curl -L https://github.com/docker/compose/releases/download/1.19.0/docker-compose-`uname -s`-`uname -m` > docker-compose
-  - chmod +x docker-compose
-  - sudo mv docker-compose /usr/local/bin
+    # Codespell
+    - stage: unit
+      sudo: false
+      install:
+        - python -m pip install codespell
+      script:
+        - codespell -f -q 3 armonaut/ tests/
 
-  # PostgreSQL
-  - psql -c 'CREATE DATABASE armonaut;' -U postgres
+    # Unit Tests
+    - stage: unit
+      sudo: false
+      install:
+        - python -m pip install -r requirements.txt -r dev-requirements.txt
+      script:
+        - pytest tests/unit/
+      after_success:
+        - codecov
 
-install:
-  - python -m pip install -r requirements.txt -r dev-requirements.txt
+    # Integration Tests (Docker)
+    - stage: integration
+      sudo: required
+      before_install:
+        - sudo rm /usr/local/bin/docker-compose
+        - curl -L https://github.com/docker/compose/releases/download/1.19.0/docker-compose-`uname -s`-`uname -m` > docker-compose
+        - chmod +x docker-compose
+        - sudo mv docker-compose /usr/local/bin
+      install:
+        - docker-compose build
+      script:
+        - docker-compose run web pytest
+      services:
+        - docker
 
-script:
-  - flake8
-  - pytest
-  - docker-compose build && docker-compose run web pytest
-
-after_success:
-  - codecov
+    # Integration Tests (Live)
+    - stage: integration
+      sudo: required
+      env:
+        - EXTERNAL_SERVICES=1
+        - REDIS_URL=redis://localhost:6379/0
+      before_install:
+        - psql -c 'CREATE DATABASE armonaut;' -U postgres
+      install:
+        - python -m pip install -r requirements.txt -r dev-requirements.txt
+      script:
+        - pytest tests/integration/
+      after_success:
+        - codecov
+      services:
+        - redis-server
+        - postgresql
 
 notifications:
   email: false
