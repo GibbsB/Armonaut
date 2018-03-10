@@ -17,7 +17,8 @@ from pyramid.view import view_config
 
 @view_config(
     route_name='index',
-    renderer='parent.html'
+    renderer='parent.html',
+    uses_session=True
 )
 def index(request):
     return {}

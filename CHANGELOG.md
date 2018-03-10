@@ -10,6 +10,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 
 - Added support for server-side Sessions stored in Redis (#1).
-- Added support for HTTP compression using gzip and brotli. (#4).
+- Added support for HTTP compression using gzip and brotli (#4).
+- Added support for conditional HTTP requests via `Last-Modified`
+  and `ETag` headers (#7).
 
 [Unreleased]: https://github.com/Armonaut/Armonaut/compare/5bb4827c30a3859c17f9200a454abab10cfff616...HEAD
