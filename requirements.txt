@@ -1,3 +1,4 @@
+alembic
 pyramid
 pyramid-debugtoolbar
 pyramid-retry
@@ -12,3 +13,5 @@ pyramid-services
 psycopg2
 sqlalchemy
 gunicorn
+zope.interface
+zope.sqlalchemy
