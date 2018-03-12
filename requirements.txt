@@ -12,3 +12,5 @@ pyramid-services
 psycopg2
 sqlalchemy
 gunicorn
+celery
+celery-redbeat

@@ -4,4 +4,5 @@ source =
     armonaut/
 omit =
     armonaut/__about__.py
+    armonaut/celery.py
     armonaut/wsgi.py
