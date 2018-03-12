@@ -26,7 +26,10 @@ def app_config():
         'armonaut.env': Environment.DEVELOPMENT,
         'armonaut.secret': 'notasecret',
         'sessions.secret': 'notasecret',
-        'sessions.url': redis_url
+        'sessions.url': redis_url,
+        'celery.broker_url': redis_url,
+        'celery.result_url': redis_url,
+        'celery.scheduler_url': redis_url
     })
     return config
 

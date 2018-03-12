@@ -13,3 +13,11 @@ services:
       - '80:8080'
     links:
       - redis
+
+  worker:
+    build:
+      context: .
+    command: celery -A armonaut.celery.app -B -S redbeat.RedBeatScheduler -l info
+    env_file: dev/environment
+    links:
+      - redis

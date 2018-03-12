@@ -86,6 +86,10 @@ def configure(settings=None) -> Configurator:
     maybe_set(settings, 'sessions.url', 'REDIS_URL')
     maybe_set(settings, 'sessions.secret', 'ARMONAUT_SECRET')
 
+    maybe_set(settings, 'celery.broker_url', 'REDIS_URL')
+    maybe_set(settings, 'celery.result_url', 'REDIS_URL')
+    maybe_set(settings, 'celery.scheduler_url', 'REDIS_URL')
+
     # Setup our development environment
     if settings['armonaut.env'] == Environment.DEVELOPMENT:
         settings.setdefault('pyramid.reload_assets', True)
@@ -144,6 +148,9 @@ def configure(settings=None) -> Configurator:
     # Register support for sessions
     config.include('.sessions')
 
+    # Register support for tasks
+    config.include('.tasks')
+
     # Register HTTP compression
     config.add_tween(
         'armonaut.utils.compression.compression_tween_factory',
@@ -155,6 +162,7 @@ def configure(settings=None) -> Configurator:
 
     # Scan everything for additional configuration
     config.scan(ignore=[
+        'armonaut.celery',
         'armonaut.wsgi',
         'armonaut.routes'
     ])

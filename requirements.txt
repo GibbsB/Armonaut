@@ -15,3 +15,5 @@ sqlalchemy
 gunicorn
 zope.interface
 zope.sqlalchemy
+celery
+celery-redbeat
